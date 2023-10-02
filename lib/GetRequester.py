@@ -1,13 +1,14 @@
 import requests
 import json
 
-class GetRequester:
+class GetRequester():
 
     def __init__(self, url):
         self.url = url
 
     def get_response_body(self):
-        pass
+        return requests.get(self.url).content
 
     def load_json(self):
-        pass
+        json_body = json.loads(self.get_response_body())
+        return [json_obj for json_obj in json_body]
